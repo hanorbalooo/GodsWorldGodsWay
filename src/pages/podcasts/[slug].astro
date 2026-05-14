@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const episodes = await getCollection('podcasts');
+  return episodes.map(ep => ({
+    params: { slug: ep.id },
+    props: { ep },
+  }));
+}
+
+const { ep } = Astro.props;
+const { Content } = await render(ep);
+---
+
+<BaseLayout title={ep.data.title} description={ep.data.description}>
+  <p class="episode-meta">{ep.data.series} · Season {ep.data.season}, Episode {ep.data.episode}</p>
+  <h1>{ep.data.title}</h1>
+  <p class="episode-scripture">{ep.data.scripture}</p>
+
+  <div class="audio-player">
+    <iframe
+      allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+      frameborder="0"
+      height="175"
+      style="width:100%;overflow:hidden;border-radius:10px;"
+      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+      src={`https://embed.podcasts.apple.com/us/podcast/${ep.data.appleId}`}
+    ></iframe>
+  </div>
+
+  <Content />
+</BaseLayout>

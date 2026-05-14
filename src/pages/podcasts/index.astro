@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const episodes = await getCollection('podcasts');
+episodes.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<BaseLayout title="Episodes" description="All episodes of God's World, God's Way — Reformed Bible teaching for men.">
+  <h1>Episodes</h1>
+  <ul class="episode-list">
+    {episodes.map(ep => (
+      <li>
+        <a href={`/podcasts/${ep.id}`}>{ep.data.title}</a>
+        <p>{ep.data.series} · {new Date(ep.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
