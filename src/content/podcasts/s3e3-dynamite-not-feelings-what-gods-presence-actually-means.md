@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 3
 scripture: "Judges 6:15-16"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2026-03-31T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/dynamite-not-feelings-what-gods-presence-actually-means/id1840487613?i=1000758472207"
 slug: "s3e3-dynamite-not-feelings-what-gods-presence-actually-means"
 sponsor: "CR101Radio.com"

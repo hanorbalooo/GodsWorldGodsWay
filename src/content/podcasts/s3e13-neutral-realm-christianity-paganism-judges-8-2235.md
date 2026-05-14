@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 13
 scripture: "Judges 8:22-35"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2026-04-03T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/"
 slug: "s3e13-neutral-realm-christianity-paganism-judges-8-2235"
 sponsor: "CR101Radio.com"

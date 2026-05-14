@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 7
 scripture: "Judges 6:34-40"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2025-04-25T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/god-says-you-dont-need-a-good-economy-to-prosper/id1840487613?i=1000763583711"
 slug: "s3e7-god-says-you-dont-need-a-good-economy-to-prosper"
 sponsor: "CR101Radio.com"

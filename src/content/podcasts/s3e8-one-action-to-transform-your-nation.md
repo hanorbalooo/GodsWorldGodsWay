@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 8
 scripture: "Judges 7:1-8"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2025-05-01T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/one-action-to-transform-your-nation/id1840487613?i=1000765042580"
 slug: "s3e8-one-action-to-transform-your-nation"
 sponsor: "CR101Radio.com"

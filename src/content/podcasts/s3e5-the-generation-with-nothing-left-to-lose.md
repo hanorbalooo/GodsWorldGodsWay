@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 5
 scripture: "Judges 6:25-27"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2025-04-10T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/the-generation-with-nothing-left-to-lose/id1840487613?i=1000760595351"
 slug: "s3e5-the-generation-with-nothing-left-to-lose"
 sponsor: "CR101Radio.com"

@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 6
 scripture: "Judges 6:28-35"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2026-04-21T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/a-death-sentence-for-obeying-god/id1840487613?i=1000762936070"
 slug: "s3e6-a-death-sentence-for-obeying-god"
 sponsor: "CR101Radio.com"

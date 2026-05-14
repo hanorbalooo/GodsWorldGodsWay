@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 9
 scripture: "Judges 7:8-25"
-publishDate: 2025-11-01T00:00:00Z
+publishDate: 2026-05-09T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/lead-from-the-front-how-to-topple-empires-judges-7-8-25/id1840487613?i=1000766911393"
 slug: "s3e9-lead-from-the-front-how-to-topple-empires-judges-7-8-25"
 sponsor: "CR101Radio.com"

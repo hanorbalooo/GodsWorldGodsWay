@@ -4,7 +4,7 @@ series: "Gideon: God vs. the Cabal"
 season: 3
 episode: 2
 scripture: "Judges 6:7-10"
-publishDate: 2026-03-14T00:00:00Z
+publishDate: 2026-03-21T00:00:00Z
 audioEmbed: "https://embed.podcasts.apple.com/us/podcast/the-ancient-idols-have-new-names/id1840487613?i=1000756497114"
 slug: "s3e2-who-are-the-false-gods-of-our-age"
 sponsor: "CR101Radio.com"

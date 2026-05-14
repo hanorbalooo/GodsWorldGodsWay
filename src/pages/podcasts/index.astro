@@ -3,17 +3,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const episodes = await getCollection('podcasts');
-episodes.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+// Group by season
+const seasons = new Map();
+for (const ep of episodes) {
+  const s = ep.data.season;
+  if (!seasons.has(s)) seasons.set(s, []);
+  seasons.get(s).push(ep);
+}
+
+// Sort episodes within each season by episode number
+for (const [, eps] of seasons) {
+  eps.sort((a, b) => a.data.episode - b.data.episode);
+}
+
+// Sort seasons ascending
+const sortedSeasons = [...seasons.entries()].sort((a, b) => a[0] - b[0]);
 ---
 
 <BaseLayout title="Episodes" description="All episodes of God's World, God's Way — Reformed Bible teaching for men.">
   <h1>Episodes</h1>
-  <ul class="episode-list">
-    {episodes.map(ep => (
-      <li>
-        <a href={`/podcasts/${ep.id}`}>{ep.data.title}</a>
-        <p>{ep.data.series} · {new Date(ep.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-      </li>
-    ))}
-  </ul>
+
+  {sortedSeasons.map(([seasonNum, eps]) => (
+    <section class="season-block">
+      <h2>Season {seasonNum}: {eps[0].data.series}</h2>
+      <ul class="episode-list">
+        {eps.map(ep => (
+          <li>
+            <p class="episode-label">Season {seasonNum}, Episode {ep.data.episode}</p>
+            <a href={`/podcasts/${ep.id}`}>{ep.data.title}</a>
+            <p class="episode-meta">{ep.data.series} · {new Date(ep.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </BaseLayout>
