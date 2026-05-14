@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const episodes = await getCollection('kitchenVideos');
+  return episodes.map(ep => ({
+    params: { slug: ep.data.slug },
+    props: { ep },
+  }));
+}
+
+const { ep } = Astro.props;
+const { Content } = await render(ep);
+---
+
+<BaseLayout title={ep.data.title} description={ep.data.description}>
+  <p class="episode-meta">{ep.data.series} · Season {ep.data.season}</p>
+  <h1>{ep.data.title}</h1>
+  <p class="episode-scripture">{ep.data.scripture}</p>
+
+  <div class="video-player">
+    <iframe
+      width="100%"
+      style="aspect-ratio: 16/9; border-radius: 10px;"
+      src={`https://www.youtube.com/embed/${ep.data.youtubeId}`}
+      title={ep.data.title}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <Content />
+</BaseLayout>

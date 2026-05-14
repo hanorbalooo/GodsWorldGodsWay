@@ -17,4 +17,18 @@ const podcasts = defineCollection({
   }),
 });
 
-export const collections = { podcasts };
+const kitchenVideos = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/kitchen-videos' }),
+  schema: z.object({
+    title: z.string(),
+    series: z.string(),
+    season: z.number(),
+    scripture: z.string(),
+    publishDate: z.string(),
+    youtubeId: z.string(),
+    description: z.string(),
+    slug: z.string(),
+  }),
+});
+
+export const collections = { podcasts, kitchenVideos };
