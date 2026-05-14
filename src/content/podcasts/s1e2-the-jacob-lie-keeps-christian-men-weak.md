@@ -124,6 +124,3 @@ We face the false prophet, the false church, which tells you there is no struggl
 Through the Spirit of God, you can now understand and imitate Jacob's godly strategies to take what's yours by right, even when the odds are stacked high against you. Over the next few weeks, we will dig into those strategies. So keep listening, and what was formerly hidden will be revealed, and as you implement God's ways found in his word, your life will slowly be transformed.
 
 Thanks for listening, and until next time, this has been Nathan Conkey for God's World, God's Way.
-```
-
-Save the file when done and tell me.
