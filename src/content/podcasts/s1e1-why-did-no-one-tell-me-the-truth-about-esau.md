@@ -1,6 +1,6 @@
 ---
 title: "Why Did No One Tell Me the Truth About Esau?"
-series: "Jacob the Perfect: A Guide for God's Strugglers"
+series: "Upright Jacob: A Guide for God's Strugglers"
 season: 1
 episode: 1
 scripture: "Genesis 25; Romans 9:13; Hebrews 12"
