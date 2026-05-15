@@ -12,7 +12,7 @@ tags:
   - faith
   - storytelling
   - humility
-draft: true
+draft: false
 slug: wholeness-in-two-stories-luke-8-40-56-sunday-class
 scripture:
   - Luke 8:40-56

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { books } from '../../data/books';
+---
+
+<BaseLayout title="Books" description="Books by Nathan Conkey of God's World, God's Way.">
+  <Breadcrumb crumbs={[{ label: 'Books', href: '/books' }]} />
+  <h1>Books</h1>
+
+  <ul class="book-list">
+    {books.map((book) => (
+      <li class="book-card">
+        <div class="book-cover">
+          <img src={book.cover} alt={`Cover of ${book.title}`} />
+        </div>
+        <div class="book-info">
+          <p class="book-author">{book.author}</p>
+          <h2 class="book-title">{book.title}</h2>
+          <p class="book-blurb">{book.blurb}</p>
+          <a class="buy-btn" href={book.buyUrl} target="_blank" rel="noopener noreferrer">
+            {book.buyLabel}
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .book-list {
+    list-style: none;
+    margin-top: 2.5rem;
+  }
+
+  .book-card {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .book-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .book-cover {
+    flex-shrink: 0;
+    width: 160px;
+  }
+
+  .book-cover img {
+    width: 100%;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .book-author {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .book-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .book-blurb {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .buy-btn {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: var(--color-accent);
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 0.65rem 1.75rem;
+    transition: opacity 0.15s;
+  }
+
+  .buy-btn:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 560px) {
+    .book-card {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .book-cover {
+      width: 140px;
+    }
+  }
+</style>

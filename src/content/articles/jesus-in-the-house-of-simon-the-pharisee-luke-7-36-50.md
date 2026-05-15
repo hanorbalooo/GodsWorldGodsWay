@@ -11,7 +11,7 @@ tags:
   - hospitality
   - offerings
   - teaching-method
-draft: true
+draft: false
 slug: jesus-in-the-house-of-simon-the-pharisee-luke-7-36-50
 scripture:
   - Luke 7:36-50

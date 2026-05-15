@@ -13,7 +13,7 @@ tags:
   - storytelling
   - rushdoony
   - pride_and_humility
-draft: true
+draft: false
 slug: tell-your-sons-and-your-sons-sons-exodus-10-sunday-class
 scripture:
   - Exodus 10:1-20

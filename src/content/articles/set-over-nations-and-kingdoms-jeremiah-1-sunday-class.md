@@ -1,7 +1,7 @@
 ---
 title: "Set Over Nations and Kingdoms — Jeremiah 1 and the Prophet's Public Mission"
 description: "A Sunday class teaching on Jeremiah 1:10, the prophetic ministry to nations and kings, and how the dechristianisation of the West has flowed from a privatised conception of prophetic work. Discussion ranges into Ephesians 4, a victorious vs. suffering Christ, and a long examination of Deuteronomy 15 on lending, the seventh-year release, and the promise that there will be no poor among God's people."
-publishDate: "2026-05-15"
+publishDate: "2026-05-15T00:00:00Z"
 tags:
   - jeremiah
   - sunday_class
@@ -12,7 +12,7 @@ tags:
   - lending
   - christian_economics
   - victorious_christ
-draft: true
+draft: false
 slug: set-over-nations-and-kingdoms-jeremiah-1-sunday-class
 scripture:
   - Jeremiah 1:9-10
