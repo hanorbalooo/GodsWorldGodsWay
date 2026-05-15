@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Donate" description="Support the work of God's World, God's Way.">
+  <h1>Support the Work</h1>
+
+  <p>God's World, God's Way is a listener-supported ministry. Every contribution — large or small — directly funds teaching, production, and distribution. Thank you for standing with us.</p>
+
+  <section class="giving-section">
+    <h2>Give Through Commission Ministers Network</h2>
+    <p>CMN (Commission Ministers Network) is a credentialed ministers network recognised as a 501(c)3 organisation. Donations processed through CMN are <strong>tax-deductible</strong> for US donors. Your gift goes directly to support this ministry.</p>
+    <a
+      class="donate-btn"
+      href="https://cmnetwork.denarionline.com/Donate/?missionary=ConkNath"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Donate via CMN (Tax-Deductible)
+    </a>
+  </section>
+
+  <hr />
+
+  <section class="giving-section">
+    <h2>Give Directly via PayPal</h2>
+    <p>You can also support the work with a direct PayPal contribution. Direct gifts are <strong>not tax-deductible</strong> but reach the ministry immediately and without processing overhead.</p>
+
+    <div class="paypal-container">
+      <script
+        src="https://www.paypal.com/sdk/js?client-id=BAAoZJ3SV3bVWi1yozsZIx_cy2W16V1oD37vuFQl9xTAVF7mgr1xNXA8HqfTGtTEHfV20cfmwmpMJxlCk8&components=hosted-buttons&disable-funding=venmo&currency=GBP"
+      ></script>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .giving-section {
+    margin-top: 2.5rem;
+  }
+
+  .giving-section p {
+    margin-bottom: 1.5rem;
+  }
+
+  .donate-btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: var(--color-accent);
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 0.75rem 2rem;
+    transition: opacity 0.15s;
+  }
+
+  .donate-btn:hover {
+    opacity: 0.85;
+  }
+
+  hr {
+    margin-top: 3rem;
+  }
+
+  .paypal-container {
+    margin-top: 0.5rem;
+  }
+</style>

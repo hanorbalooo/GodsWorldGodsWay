@@ -1,22 +1,26 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 
-const allEpisodes = await getCollection('kitchenVideos');
-const episodes = allEpisodes
-  .filter(ep => ep.data.season === 1)
+const episodes = (await getCollection('kitchenVideos'))
   .sort((a, b) => new Date(a.data.publishDate).getTime() - new Date(b.data.publishDate).getTime());
 ---
 
 <BaseLayout title="Rethinking the Life of Gideon" description="A verse-by-verse video series on the Gideon narrative in Judges 6–8.">
+  <Breadcrumb crumbs={[
+    { label: 'Videos', href: '/videos' },
+    { label: 'Kitchen Videos', href: '/videos/kitchen-videos' },
+    { label: 'Rethinking the Life of Gideon', href: '/videos/kitchen-videos/rethinking-gideon' },
+  ]} />
   <h1>Rethinking the Life of Gideon</h1>
-  <p>Season 1 · Kitchen Videos</p>
-
   <ul class="episode-list">
-    {episodes.map(ep => (
+    {episodes.map((ep, i) => (
       <li>
+        <p class="episode-meta">Episode {i + 1}</p>
         <a href={`/videos/kitchen-videos/rethinking-gideon/${ep.data.slug}`}>{ep.data.title}</a>
-        <p class="episode-meta">{ep.data.scripture} · {new Date(ep.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p>{new Date(ep.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p>{ep.data.description}</p>
       </li>
     ))}
   </ul>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { kitchenVideoSeries } from '../../../data/kitchenVideoSeries';
+---
+
+<BaseLayout title="Kitchen Videos" description="Video series from the kitchen table — verse-by-verse Bible teaching for men.">
+  <Breadcrumb crumbs={[
+    { label: 'Videos', href: '/videos' },
+    { label: 'Kitchen Videos', href: '/videos/kitchen-videos' },
+  ]} />
+  <h1>Kitchen Videos</h1>
+  <ul class="episode-list">
+    {kitchenVideoSeries.map((series) => (
+      <li>
+        <a href={`/videos/kitchen-videos/${series.slug}`}>{series.title}</a>
+        <p>{series.description}</p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

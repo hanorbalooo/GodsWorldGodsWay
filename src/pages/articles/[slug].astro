@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((entry) => ({
+    params: { slug: entry.data.slug ?? entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = entry.data.slug ?? entry.id;
+
+function formatDate(str: string) {
+  return new Date(str).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <Breadcrumb crumbs={[
+    { label: 'Articles', href: '/articles' },
+    { label: entry.data.title, href: `/articles/${slug}` },
+  ]} />
+
+  <p class="article-date">{formatDate(entry.data.publishDate)}</p>
+  <h1>{entry.data.title}</h1>
+
+  <div class="article-body">
+    <Content />
+  </div>
+
+  {entry.data.scripture && entry.data.scripture.length > 0 && (
+    <div class="scripture-box">
+      <p class="box-label">Scripture References</p>
+      <ul>
+        {entry.data.scripture.map((ref) => <li>{ref}</li>)}
+      </ul>
+    </div>
+  )}
+
+  <div class="article-tags">
+    <p class="box-label">Tags</p>
+    <div class="tag-list">
+      {entry.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-date {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    margin-top: 2rem;
+  }
+
+  .scripture-box {
+    margin-top: 3rem;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .scripture-box ul {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+
+  .scripture-box ul li {
+    font-style: italic;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .article-tags {
+    margin-top: 2rem;
+  }
+
+  .box-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+  }
+</style>

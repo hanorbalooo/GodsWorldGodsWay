@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const allEpisodes = await getCollection('kitchenVideos');
+  const allEpisodes = await getCollection('offTheCuff');
   return allEpisodes.map((ep) => ({
     params: { slug: ep.data.slug },
     props: { ep },
@@ -18,23 +18,20 @@ const { Content } = await render(ep);
 <BaseLayout title={ep.data.title} description={ep.data.description}>
   <Breadcrumb crumbs={[
     { label: 'Videos', href: '/videos' },
-    { label: 'Kitchen Videos', href: '/videos/kitchen-videos' },
-    { label: 'Rethinking the Life of Gideon', href: '/videos/kitchen-videos/rethinking-gideon' },
-    { label: ep.data.title, href: `/videos/kitchen-videos/rethinking-gideon/${ep.data.slug}` },
+    { label: 'Off the Cuff', href: '/videos/off-the-cuff' },
+    { label: ep.data.title, href: `/videos/off-the-cuff/${ep.data.slug}` },
   ]} />
   <p class="episode-meta">
-    Season {ep.data.season} · {new Date(ep.data.publishDate).toLocaleDateString('en-GB', {
+    {new Date(ep.data.publishDate).toLocaleDateString('en-GB', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    })}
+    })} · {ep.data.series}
   </p>
 
   <h1>{ep.data.title}</h1>
 
   <p class="episode-scripture">{ep.data.scripture}</p>
-
-  <p class="episode-description">{ep.data.description}</p>
 
   <div class="video-embed">
     <iframe
@@ -67,12 +64,6 @@ const { Content } = await render(ep);
     width: 100%;
     height: 100%;
     border: none;
-  }
-
-  .episode-description {
-    margin-bottom: 0;
-    color: var(--color-muted);
-    font-size: 0.95rem;
   }
 
   .episode-body {

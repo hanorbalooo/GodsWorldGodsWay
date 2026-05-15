@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const allEpisodes = await getCollection('offTheCuff');
+
+allEpisodes.sort((a, b) =>
+  new Date(a.data.publishDate).getTime() - new Date(b.data.publishDate).getTime()
+);
+---
+
+<BaseLayout
+  title="Off the Cuff"
+  description="Unscripted video commentary on Scripture, culture, and the Christian life — for men who want to think clearly and live faithfully."
+>
+  <Breadcrumb crumbs={[
+    { label: 'Videos', href: '/videos' },
+    { label: 'Off the Cuff', href: '/videos/off-the-cuff' },
+  ]} />
+  <h1>Off the Cuff</h1>
+  <p>Unscripted video commentary on Scripture, culture, and the Christian life.</p>
+
+  <ul class="episode-list">
+    {allEpisodes.map((ep) => (
+      <li>
+        <p class="episode-meta">
+          {new Date(ep.data.publishDate).toLocaleDateString('en-GB', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+        <a href={`/videos/off-the-cuff/${ep.data.slug}`}>{ep.data.title}</a>
+        <p class="episode-scripture">{ep.data.scripture}</p>
+        <p>{ep.data.description.slice(0, 160)}…</p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

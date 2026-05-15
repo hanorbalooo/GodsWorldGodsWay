@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { kitchenVideoSeries } from '../../data/kitchenVideoSeries';
+
+const offTheCuff = {
+  title: 'Off the Cuff',
+  slug: 'off-the-cuff',
+  description: 'Unscripted video commentary on Scripture, culture, and the Christian life.',
+};
+---
+
+<BaseLayout title="Videos" description="Video teaching from God's World, God's Way.">
+  <h1>Videos</h1>
+
+  <section class="video-category">
+    <h2><a href="/videos/kitchen-videos">Kitchen Videos</a></h2>
+    <ul class="episode-list">
+      {kitchenVideoSeries.map((series) => (
+        <li>
+          <a href={`/videos/kitchen-videos/${series.slug}`}>{series.title}</a>
+          <p>{series.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="video-category">
+    <h2><a href={`/videos/${offTheCuff.slug}`}>{offTheCuff.title}</a></h2>
+    <p>{offTheCuff.description}</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .video-category {
+    margin-top: 3rem;
+  }
+
+  .video-category h2 a {
+    text-decoration: none;
+    color: var(--color-accent);
+  }
+
+  .video-category h2 a:hover {
+    opacity: 0.8;
+  }
+</style>

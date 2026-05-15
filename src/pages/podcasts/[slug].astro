@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -15,6 +16,10 @@ const { Content } = await render(ep);
 ---
 
 <BaseLayout title={ep.data.title} description={ep.data.description}>
+  <Breadcrumb crumbs={[
+    { label: 'Podcasts', href: '/podcasts' },
+    { label: ep.data.title, href: `/podcasts/${ep.id}` },
+  ]} />
   <p class="episode-meta">{ep.data.series} · Season {ep.data.season}, Episode {ep.data.episode}</p>
   <h1>{ep.data.title}</h1>
   <p class="episode-scripture">{ep.data.scripture}</p>

@@ -31,4 +31,30 @@ const kitchenVideos = defineCollection({
   }),
 });
 
-export const collections = { podcasts, kitchenVideos };
+const offTheCuff = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/off-the-cuff' }),
+  schema: z.object({
+    title: z.string(),
+    series: z.string(),
+    scripture: z.string(),
+    publishDate: z.string(),
+    youtubeId: z.string(),
+    description: z.string(),
+    slug: z.string(),
+  }),
+});
+
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.string(),
+    tags: z.array(z.string()),
+    draft: z.boolean().default(true),
+    slug: z.string().optional(),
+    scripture: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { podcasts, kitchenVideos, offTheCuff, articles };
