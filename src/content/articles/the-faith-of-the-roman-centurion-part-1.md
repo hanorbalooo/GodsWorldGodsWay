@@ -4,7 +4,7 @@ description: "An unnamed Roman officer sends for Jesus through the elders of the
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 7", "Roman Centurion", "Faith", "Authority", "Harmony"]
 scripture: ["Luke 7:1-10"]
-draft: true
+draft: false
 ---
 > **Editorial Note:** This is a transcript of an audio Bible talk on Luke chapter 7. It has been lightly edited by Claude AI for readability: spelling has been corrected, paragraphs and sentences have been added for clarity, and scripture quotations have been highlighted. Conversational asides, interjections, and banter are marked with square brackets. The spoken and informal character of the original has been preserved throughout.
 
