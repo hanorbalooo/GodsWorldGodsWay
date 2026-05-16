@@ -4,5 +4,5 @@ description: "A man naked among the tombs, cut off from the living, associated w
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 8", "Demoniac", "Spiritual Warfare", "Power", "Gadarenes"]
 scripture: ["Luke 8:26-39"]
-draft: false
+draft: true
 ---

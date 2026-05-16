@@ -4,5 +4,5 @@ description: "Isaac was one of the great men of God — and yet he favoured his 
 publishDate: "2026-05-15"
 tags: ["Jacob", "Isaac", "Genesis", "Sunday Class", "Fatherhood", "Adversity", "Covenant"]
 scripture: ["Genesis 25", "Genesis 26", "Genesis 27", "Genesis 28", "Psalm 24:6"]
-draft: false
+draft: true
 ---

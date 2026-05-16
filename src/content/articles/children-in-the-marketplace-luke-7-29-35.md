@@ -4,5 +4,5 @@ description: "The publicans justified God; the Pharisees and lawyers rejected th
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 7", "Pharisees", "John the Baptist", "Repentance", "Law"]
 scripture: ["Luke 7:29-35"]
-draft: false
+draft: true
 ---

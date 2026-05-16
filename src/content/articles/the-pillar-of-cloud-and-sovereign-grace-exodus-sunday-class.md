@@ -4,5 +4,5 @@ description: "Only one people got the pillar of cloud and fire — not because t
 publishDate: "2026-05-15"
 tags: ["Exodus", "Sunday Class", "Pillar of Cloud", "Sovereign Grace", "Israel in the Desert", "Providence"]
 scripture: ["Exodus 13:21-22", "Exodus 14:19-20", "Exodus 33:14-15"]
-draft: false
+draft: true
 ---

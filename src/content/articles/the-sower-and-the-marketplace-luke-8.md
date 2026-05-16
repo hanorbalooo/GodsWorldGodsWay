@@ -4,5 +4,5 @@ description: "The disciples didn't understand the parable either — and they as
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 8", "Parables", "Word of God", "Kingdom of God", "Discipleship"]
 scripture: ["Luke 8:4-15"]
-draft: false
+draft: true
 ---

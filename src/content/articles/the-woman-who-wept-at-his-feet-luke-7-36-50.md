@@ -4,5 +4,5 @@ description: "A sinful woman walks uninvited into Simon the Pharisee's house, we
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 7", "Simon the Pharisee", "Forgiveness", "Offerings", "Women in Scripture"]
 scripture: ["Luke 7:36-50"]
-draft: false
+draft: true
 ---

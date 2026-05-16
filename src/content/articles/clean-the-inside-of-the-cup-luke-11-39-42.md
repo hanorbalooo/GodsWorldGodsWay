@@ -4,5 +4,5 @@ description: "The Pharisees polished the outside and left the inside full of rav
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 11", "Pharisees", "Sanctification", "Almsgiving", "Heart"]
 scripture: ["Luke 11:39-42"]
-draft: false
+draft: true
 ---

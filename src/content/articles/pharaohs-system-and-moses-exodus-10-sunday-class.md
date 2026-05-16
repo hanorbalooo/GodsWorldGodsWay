@@ -4,5 +4,5 @@ description: "Even after frogs, gnats, boils, and darkness, Pharaoh kept dickeri
 publishDate: "2026-05-15"
 tags: ["Exodus", "Sunday Class", "Pharaoh", "Moses", "Sovereignty", "Judgement", "Plagues"]
 scripture: ["Exodus 10", "Exodus 11"]
-draft: false
+draft: true
 ---

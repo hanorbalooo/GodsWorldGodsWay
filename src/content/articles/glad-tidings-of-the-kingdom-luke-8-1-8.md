@@ -4,5 +4,5 @@ description: "Jesus went village to village proclaiming the glad tidings of the 
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 8", "Kingdom of God", "Preaching", "Evangelism", "Christology"]
 scripture: ["Luke 8:1-8"]
-draft: false
+draft: true
 ---

@@ -4,5 +4,5 @@ description: "An unnamed Roman officer sends for Jesus through the elders of the
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 7", "Roman Centurion", "Faith", "Authority", "Harmony"]
 scripture: ["Luke 7:1-10"]
-draft: false
+draft: true
 ---

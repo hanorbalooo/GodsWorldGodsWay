@@ -4,5 +4,5 @@ description: "God said Jacob have I loved — so why has tradition painted him a
 publishDate: "2026-05-15"
 tags: ["Jacob", "Esau", "Genesis", "COTLG", "Election", "Covenant", "Sermon"]
 scripture: ["Genesis 25", "Malachi 1:2-3", "Romans 9"]
-draft: false
+draft: true
 ---

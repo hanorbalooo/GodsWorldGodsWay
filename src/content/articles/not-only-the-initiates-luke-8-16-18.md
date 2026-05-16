@@ -4,5 +4,5 @@ description: "No one lights a candle and puts it under a bowl. Christianity is n
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 8", "Scripture", "Teaching", "Protestantism", "Discipleship"]
 scripture: ["Luke 8:16-18"]
-draft: false
+draft: true
 ---
