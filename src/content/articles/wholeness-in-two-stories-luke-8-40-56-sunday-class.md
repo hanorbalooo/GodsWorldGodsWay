@@ -4,7 +4,7 @@ description: "A verse-by-verse teaching on Luke 8:40–56, examining the interle
 publishDate: "2026-05-15"
 tags:
   - luke
-  - sunday_class
+  - Sunday Class
   - transcribed_audio
   - jairus
   - healing

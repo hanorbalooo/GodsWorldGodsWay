@@ -1,9 +1,8 @@
 ---
-title: "The Gadarene Demoniac: Place, People, and the Reality of Demonic Possession"
-description: "A study in Luke 8:26–39 — resisting theological abstraction to take seriously a real man in a real place, what long-term demonic possession looks like, and why our culture gravitates toward symbols of death."
-publishDate: "2026-05-15T00:00:00Z"
-tags: ["Luke", "Gadarene demoniac", "demonic possession", "supernatural", "death", "place", "Africa"]
-draft: true
-slug: "the-gadarene-demoniac-luke-8-26-39"
+title: "The Gadarene Demoniac: Luke 8:26–39"
+description: "A man naked among the tombs, cut off from the living, associated with death and power — this is what long-term demon possession looks like. And this is who Jesus walked toward when he arrived at the country of the Gadarenes."
+publishDate: "2026-05-15"
+tags: ["Luke", "Sunday Class", "Luke 8", "Demoniac", "Spiritual Warfare", "Power", "Gadarenes"]
 scripture: ["Luke 8:26-39"]
+draft: false
 ---

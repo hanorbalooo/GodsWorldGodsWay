@@ -1,9 +1,8 @@
 ---
-title: "Children in the Marketplace: Phariseeism and the Rejection of Christ's Kingship"
-description: "A study in Luke 7:29–35 — why the Pharisees accepted John but rejected Jesus, what it means to 'justify God', and how the spirit of Phariseeism still controls those who will accept Christ as priest but not as king."
-publishDate: "2026-05-15T00:00:00Z"
-tags: ["Luke", "Pharisees", "John the Baptist", "kingship", "law", "repentance", "ecclesiastical control"]
-draft: true
-slug: "children-in-the-marketplace-luke-7-29-35"
+title: "Children in the Marketplace: Luke 7:29–35"
+description: "The publicans justified God; the Pharisees and lawyers rejected the counsel of God against themselves. Why did one group receive John's message and the other refuse it — and what does the Pharisee spirit look like in our own hearts today?"
+publishDate: "2026-05-15"
+tags: ["Luke", "Sunday Class", "Luke 7", "Pharisees", "John the Baptist", "Repentance", "Law"]
 scripture: ["Luke 7:29-35"]
+draft: false
 ---

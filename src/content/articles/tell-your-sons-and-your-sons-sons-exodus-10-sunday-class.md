@@ -4,7 +4,7 @@ description: "A Sunday class teaching on Exodus 10:1–20 — the locust plague 
 publishDate: "2026-05-15"
 tags:
   - exodus
-  - sunday_class
+  - Sunday Class
   - transcribed_audio
   - plagues_of_egypt
   - generational_faith

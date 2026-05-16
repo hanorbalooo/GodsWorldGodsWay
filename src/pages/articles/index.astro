@@ -29,7 +29,7 @@ function formatDate(str: string) {
     {articles.map((article) => {
       const slug = article.data.slug ?? article.id;
       return (
-        <li class="article-card" data-tags={article.data.tags.join(' ')}>
+        <li class="article-card" data-tags={article.data.tags.join('|')}>
           <a href={`/articles/${slug}`} class="article-title">{article.data.title}</a>
           <p class="article-date">{formatDate(article.data.publishDate)}</p>
           <p class="article-description">{article.data.description}</p>
@@ -157,7 +157,7 @@ function formatDate(str: string) {
 
       let visible = 0;
       cards.forEach((card) => {
-        const tags = card.dataset.tags!.split(' ');
+        const tags = card.dataset.tags!.split('|');
         const show = tag === 'all' || tags.includes(tag);
         card.hidden = !show;
         if (show) visible++;

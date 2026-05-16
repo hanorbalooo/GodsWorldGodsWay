@@ -4,7 +4,7 @@ description: "A Sunday class teaching on Jeremiah 1:10, the prophetic ministry t
 publishDate: "2026-05-15T00:00:00Z"
 tags:
   - jeremiah
-  - sunday_class
+  - Sunday Class
   - transcribed_audio
   - prophetic_ministry
   - dechristianisation

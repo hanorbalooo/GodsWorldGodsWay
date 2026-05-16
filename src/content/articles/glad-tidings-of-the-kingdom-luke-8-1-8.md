@@ -1,9 +1,8 @@
 ---
-title: "Glad Tidings of the Kingdom: What Jesus Was Actually Preaching"
-description: "A study in Luke 8:1–8 — recovering what 'preaching' meant in Jesus's ministry: not a church meeting format but the proclamation of a present king, and what it means that the glad tidings are for the poor."
-publishDate: "2026-05-15T00:00:00Z"
-tags: ["Luke", "kingdom of God", "preaching", "kingship", "gospel", "glad tidings", "Caesar Augustus"]
-draft: true
-slug: "glad-tidings-of-the-kingdom-luke-8-1-8"
+title: "Glad Tidings of the Kingdom: Luke 8:1–8"
+description: "Jesus went village to village proclaiming the glad tidings of the kingdom — not a dour condemnation but an announcement that the king had come. What does it mean that the greatest preacher who ever lived gave people glad tidings?"
+publishDate: "2026-05-15"
+tags: ["Luke", "Sunday Class", "Luke 8", "Kingdom of God", "Preaching", "Evangelism", "Christology"]
 scripture: ["Luke 8:1-8"]
+draft: false
 ---

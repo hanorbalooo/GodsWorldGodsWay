@@ -63,6 +63,20 @@ nav a:hover {
   color: var(--color-accent);
 }
 
+nav a.nav-donate {
+  color: #ffffff;
+  background: var(--color-accent);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+nav a.nav-donate:hover {
+  opacity: 0.85;
+  color: #ffffff;
+}
+
 /* Main content */
 main {
   max-width: var(--max-width);
