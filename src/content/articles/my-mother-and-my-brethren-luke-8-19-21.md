@@ -4,7 +4,7 @@ description: "When Jesus's mother and brothers came looking for him, he didn't s
 publishDate: "2026-05-15"
 tags: ["Luke", "Sunday Class", "Luke 8", "Kingdom of God", "Family", "Covenant", "Hearing the Word"]
 scripture: ["Luke 8:19-21"]
-draft: true
+draft: false
 ---
 > **Note:** This is a transcript of an audio Bible talk on Luke 8:19–21. It has been lightly edited by Claude AI for readability: misspellings have been corrected, sentences and paragraphs have been formed where necessary, and banter or informal interjections have been marked as such. Scripture quotations are highlighted. The speaker's meaning and voice have been preserved throughout.
 
