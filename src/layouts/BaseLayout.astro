@@ -4,9 +4,14 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  mainClass?: string;
 }
 
-const { title, description = "Reformed Bible teaching for men who want to live all of life under the lordship of Christ." } = Astro.props;
+const {
+  title,
+  description = "Reformed Bible teaching for men who want to live all of life under the lordship of Christ.",
+  mainClass = '',
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -30,19 +35,41 @@ const { title, description = "Reformed Bible teaching for men who want to live a
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e92c7b3a117a4cf696f268c0f25dddf5"}'></script>
   </head>
   <body>
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
     <header>
-      <a class="site-title" href="/">God's World, God's Way</a>
-      <nav>
+      <a class="site-logo" href="/" aria-label="God's World, God's Way — Home">
+        <img class="logo-light-variant" src="/images/logo-light.svg" alt="God's World, God's Way" height="64" />
+        <img class="logo-dark-variant"  src="/images/logo-dark.svg"  alt="God's World, God's Way" height="64" />
+      </a>
+      <nav aria-label="Main navigation">
         <a href="/videos">Videos</a>
         <a href="/articles">Articles</a>
         <a href="/books">Books</a>
         <a href="/about">About</a>
         <a href="/search">Search</a>
         <a href="/donate" class="nav-donate">Donate</a>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="
+          const html = document.documentElement;
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        ">
+          <span class="icon-sun" aria-hidden="true">☀︎</span>
+          <span class="icon-moon" aria-hidden="true">☽</span>
+        </button>
       </nav>
     </header>
 
-    <main>
+    <main class={mainClass}>
       <slot />
     </main>
 

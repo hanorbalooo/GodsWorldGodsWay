@@ -1,17 +1,177 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
+const allArticles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const allPodcasts = (await getCollection('podcasts'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const allVideos = (await getCollection('kitchenVideos'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const featuredArticle = allArticles[0];
+const featuredPodcast = allPodcasts[0];
+const featuredVideo   = allVideos[0];
+
+const recentArticles = allArticles.slice(1, 5);
+const recentPodcasts = allPodcasts.slice(1, 4);
+
+function truncate(str: string, n: number) {
+  return str.length > n ? str.slice(0, n).trim() + '…' : str;
+}
+
+function formatDate(str: string) {
+  return new Date(str).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  });
+}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Home"
+  description="Reformed Bible teaching for men who want to live all of life under the lordship of Christ."
+  mainClass="homepage-main"
+>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Where men learn to prosper by alignment with God's ways.</p>
+      <h1 class="hero-heading">
+        God's World,<br /><em>God's Way</em>
+      </h1>
+      <p class="hero-sub">
+        Expository Bible teaching, podcasts, articles, and videos
+        for men who want to live all of life under the lordship of Christ.
+      </p>
+      <div class="hero-ctas">
+        <a href="/podcasts" class="cta-primary">Listen to Podcast</a>
+        <a href="/articles" class="cta-secondary">Read Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured Content ── -->
+  <section class="featured-section">
+    <div class="section-inner wide">
+      <div class="section-header">
+        <h2 class="section-heading">Latest Content</h2>
+      </div>
+      <div class="feature-grid">
+
+        {featuredArticle && (
+          <a
+            href={`/articles/${featuredArticle.data.slug ?? featuredArticle.id}`}
+            class="feature-card"
+          >
+            <span class="card-category">Article</span>
+            <h3 class="card-title">{featuredArticle.data.title}</h3>
+            <p class="card-excerpt">{truncate(featuredArticle.data.description, 130)}</p>
+            <span class="card-link">Read &rarr;</span>
+          </a>
+        )}
+
+        {featuredPodcast && (
+          <a
+            href={`/podcasts/${featuredPodcast.id}`}
+            class="feature-card"
+          >
+            <span class="card-category">Podcast &middot; {featuredPodcast.data.series}</span>
+            <h3 class="card-title">{featuredPodcast.data.title}</h3>
+            <p class="card-excerpt">{truncate(featuredPodcast.data.description, 130)}</p>
+            <span class="card-link">Listen &rarr;</span>
+          </a>
+        )}
+
+        {featuredVideo && (
+          <a
+            href={`/videos/kitchen-videos/rethinking-gideon/${featuredVideo.data.slug}`}
+            class="feature-card"
+          >
+            <span class="card-category">Video &middot; {featuredVideo.data.series}</span>
+            <h3 class="card-title">{featuredVideo.data.title}</h3>
+            <p class="card-excerpt">{truncate(featuredVideo.data.description, 130)}</p>
+            <span class="card-link">Watch &rarr;</span>
+          </a>
+        )}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Scripture Banner ── -->
+  <section class="scripture-banner">
+    <div class="section-inner">
+      <blockquote class="scripture-quote">
+        "The earth is the Lord's, and the fullness thereof;
+        the world, and they that dwell therein."
+      </blockquote>
+      <cite class="scripture-ref">Psalm 24:1</cite>
+    </div>
+  </section>
+
+  <!-- ── Recent Articles ── -->
+  {recentArticles.length > 0 && (
+    <section class="articles-section">
+      <div class="section-inner wide">
+        <div class="section-header">
+          <h2 class="section-heading">Recent Articles</h2>
+          <a href="/articles" class="section-more">All Articles &rarr;</a>
+        </div>
+        <div class="articles-grid">
+          {recentArticles.map(article => (
+            <a
+              href={`/articles/${article.data.slug ?? article.id}`}
+              class="article-card"
+            >
+              <h3 class="article-card-title">{article.data.title}</h3>
+              <p class="article-card-excerpt">{truncate(article.data.description, 100)}</p>
+              <span class="article-card-date">{formatDate(article.data.publishDate)}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── Podcast Section ── -->
+  {recentPodcasts.length > 0 && (
+    <section class="podcast-section">
+      <div class="section-inner wide">
+        <div class="section-header">
+          <h2 class="section-heading">From the Podcast</h2>
+          <a href="/podcasts" class="section-more">All Episodes &rarr;</a>
+        </div>
+        <ul class="podcast-list">
+          {recentPodcasts.map(ep => (
+            <li>
+              <a href={`/podcasts/${ep.id}`} class="podcast-item">
+                <div class="podcast-item-meta">
+                  <span class="podcast-series">{ep.data.series}</span>
+                  <span class="podcast-ep">S{ep.data.season}·E{ep.data.episode}</span>
+                </div>
+                <h3 class="podcast-item-title">{ep.data.title}</h3>
+                <p class="podcast-item-scripture">{ep.data.scripture}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- ── Donate CTA ── -->
+  <section class="donate-cta">
+    <div class="section-inner">
+      <h2 class="donate-heading">Support the Ministry</h2>
+      <p class="donate-text">
+        God's World, God's Way is listener-supported. If this teaching has been
+        valuable to you, please consider giving.
+      </p>
+      <a href="/donate" class="cta-primary">Donate</a>
+    </div>
+  </section>
+
+</BaseLayout>
