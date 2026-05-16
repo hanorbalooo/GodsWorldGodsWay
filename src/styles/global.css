@@ -90,7 +90,7 @@ header::after {
   display: block;
   line-height: 0;
   flex-shrink: 0;
-  margin-left: 15%;
+  margin-left: 12%;
 }
 
 .site-logo img {
