@@ -15,12 +15,25 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <title>{title} | God's World, God's Way</title>
+
+    <!-- Apply saved theme before paint to avoid flash -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem('gwgw-theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        /* default is light — data-theme="light" is set in HTML attr above */
+      })();
+    </script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGB3B4SZEZ"></script>
@@ -35,20 +48,12 @@ const {
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e92c7b3a117a4cf696f268c0f25dddf5"}'></script>
   </head>
   <body>
-    <script is:inline>
-      (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      })();
-    </script>
-
     <header>
       <a class="site-logo" href="/" aria-label="God's World, God's Way — Home">
-        <img class="logo-light-variant" src="/images/logo-light.svg" alt="God's World, God's Way" height="64" />
-        <img class="logo-dark-variant"  src="/images/logo-dark.svg"  alt="God's World, God's Way" height="64" />
+        <!-- Single image; JS swaps src on theme toggle -->
+        <img id="site-logo-img" src="/images/logo-light.svg" alt="God's World, God's Way" height="60" />
       </a>
+
       <nav aria-label="Main navigation">
         <a href="/videos">Videos</a>
         <a href="/articles">Articles</a>
@@ -56,14 +61,12 @@ const {
         <a href="/about">About</a>
         <a href="/search">Search</a>
         <a href="/donate" class="nav-donate">Donate</a>
-        <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="
-          const html = document.documentElement;
-          const current = html.getAttribute('data-theme');
-          const next = current === 'dark' ? 'light' : 'dark';
-          html.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
-        ">
-          <span class="icon-sun" aria-hidden="true">☀︎</span>
+        <button
+          class="theme-toggle"
+          aria-label="Toggle dark/light mode"
+          id="theme-toggle-btn"
+        >
+          <span class="icon-sun"  aria-hidden="true">☀︎</span>
           <span class="icon-moon" aria-hidden="true">☽</span>
         </button>
       </nav>
@@ -76,5 +79,33 @@ const {
     <footer>
       <p>© {new Date().getFullYear()} God's World, God's Way · Sponsored by <a href="https://cr101radio.com">CR101Radio.com</a></p>
     </footer>
+
+    <script is:inline>
+      (function () {
+        var LOGO_LIGHT = '/images/logo-light.svg';
+        var LOGO_DARK  = '/images/logo-dark.svg';
+
+        function applyTheme(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          var logo = document.getElementById('site-logo-img');
+          if (logo) logo.src = theme === 'dark' ? LOGO_DARK : LOGO_LIGHT;
+        }
+
+        /* Restore saved preference on load */
+        var saved = localStorage.getItem('gwgw-theme');
+        if (saved === 'dark') applyTheme('dark');
+
+        /* Wire up toggle button */
+        var btn = document.getElementById('theme-toggle-btn');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var current = document.documentElement.getAttribute('data-theme');
+            var next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('gwgw-theme', next);
+            applyTheme(next);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

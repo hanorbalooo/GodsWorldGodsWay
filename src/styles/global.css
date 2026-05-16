@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+/* Canon Press typography: Newsreader (headings + body) · Inter (UI) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -6,40 +7,31 @@
   padding: 0;
 }
 
-/* ── Color system derived from logo palette ── */
+/* ── Color system — logo palette ── */
 :root {
-  /* Light mode */
-  --color-bg:          #faf7f2;
-  --color-bg-alt:      #f0ebe0;
-  --color-card-bg:     #ffffff;
-  --color-text:        #1c1208;
-  --color-accent:      #b7481d;
-  --color-gold:        #d4a54d;
-  --color-muted:       #6b5a4e;
-  --color-border:      #ddd0c0;
+  --color-bg:      #faf7f2;
+  --color-bg-alt:  #f0ebe0;
+  --color-card-bg: #ffffff;
+  --color-text:    #1c1208;
+  --color-accent:  #b7481d;
+  --color-gold:    #d4a54d;
+  --color-muted:   #6b5a4e;
+  --color-border:  #ddd0c0;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body:    'Source Serif 4', Georgia, serif;
-  --font-sans:    system-ui, -apple-system, sans-serif;
+  /* Nav is always dark — hardcoded, not variable */
+  --nav-bg:        #1c1208;
+  --nav-text:      #f5e6c8;
+  --nav-stripe:    #d4a54d;
 
-  --max-width:      720px;
+  --font-heading: 'Newsreader', Georgia, serif;
+  --font-body:    'Newsreader', Georgia, serif;
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+
+  --max-width:      740px;
   --max-width-wide: 1100px;
-  --spacing:        1.75rem;
 }
 
-/* System-pref dark mode (no manual override) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg:      #13100a;
-    --color-bg-alt:  #1c1810;
-    --color-card-bg: #1c1810;
-    --color-text:    #f5e6c8;
-    --color-muted:   #a89070;
-    --color-border:  #2c2416;
-  }
-}
-
-/* Manual dark override */
+/* Dark mode — only via manual toggle, JS sets data-theme */
 [data-theme="dark"] {
   --color-bg:      #13100a;
   --color-bg-alt:  #1c1810;
@@ -50,7 +42,7 @@
 }
 
 html {
-  font-size: 18px;
+  font-size: 19px;
   scroll-behavior: smooth;
 }
 
@@ -62,18 +54,33 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Navigation ── */
+/* ══════════════════════════════════════════
+   NAVIGATION — always dark
+   ══════════════════════════════════════════ */
+
 header {
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 1px 0 0 var(--color-accent);
-  padding: 0.6rem 2rem;
+  background: var(--nav-bg);
+  border-bottom: 3px solid var(--nav-stripe);
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-bg);
+  gap: 1rem;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* Warm parchment band directly below the header stripe */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: var(--color-bg);
+  z-index: -1;
 }
 
 .site-logo {
@@ -83,89 +90,40 @@ header {
 }
 
 .site-logo img {
-  height: 64px;
+  height: 60px;
   width: auto;
   display: block;
-}
-
-/* Logo dark/light swap tied to data-theme and system pref */
-.logo-dark-variant { display: none; }
-.logo-light-variant { display: block; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-dark-variant  { display: block; }
-  :root:not([data-theme="light"]) .logo-light-variant { display: none; }
-}
-[data-theme="dark"] .logo-dark-variant  { display: block; }
-[data-theme="dark"] .logo-light-variant { display: none; }
-
-/* Theme toggle button */
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--color-border);
-  color: var(--color-muted);
-  cursor: pointer;
-  border-radius: 2px;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  transition: border-color 0.15s, color 0.15s;
-}
-.theme-toggle:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-.theme-toggle .icon-sun  { display: none; }
-.theme-toggle .icon-moon { display: block; }
-[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun  { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-}
-
-/* Fallback text link (kept for non-logo pages) */
-header a.site-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  text-decoration: none;
-  letter-spacing: 0.01em;
 }
 
 nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0 0.25rem;
+  gap: 0;
 }
 
 nav a {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(245, 230, 200, 0.8);
   text-decoration: none;
-  padding: 0.35rem 0.75rem;
+  padding: 0.4rem 0.8rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  border-radius: 2px;
   transition: color 0.15s;
 }
 
 nav a:hover {
-  color: var(--color-accent);
+  color: var(--nav-stripe);
+  opacity: 1;
 }
 
 nav a.nav-donate {
   color: #f5e6c8;
   background: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  border-radius: 1px;
+  margin-left: 0.4rem;
 }
 
 nav a.nav-donate:hover {
@@ -173,49 +131,100 @@ nav a.nav-donate:hover {
   color: #f5e6c8;
 }
 
-/* ── Main content (inner pages) ── */
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(245, 230, 200, 0.2);
+  color: rgba(245, 230, 200, 0.55);
+  cursor: pointer;
+  border-radius: 2px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--nav-stripe);
+  color: var(--nav-stripe);
+}
+
+/* Show moon (☽) in light mode, sun (☀︎) in dark mode */
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ══════════════════════════════════════════
+   MAIN CONTENT — inner pages
+   ══════════════════════════════════════════ */
+
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
+  padding: 3.5rem 1.5rem 6rem;
 }
 
-/* Homepage override — sections control their own width */
 main.homepage-main {
   max-width: none;
   padding: 0;
   margin: 0;
 }
 
+/* ── Inner-page breadcrumb page top ── */
+main > nav.breadcrumb + * {
+  margin-top: 1rem;
+}
+
 /* ── Typography ── */
 h1 {
   font-family: var(--font-heading);
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 1rem;
   color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
 h2 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: 600;
-  margin-top: 2.5rem;
+  line-height: 1.3;
+  margin-top: 2.75rem;
   margin-bottom: 0.75rem;
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 h3 {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
+  line-height: 1.3;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+h4 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 1.75rem;
+  margin-bottom: 0.4rem;
 }
 
 p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
 }
 
 a {
@@ -238,33 +247,45 @@ strong {
 hr {
   border: none;
   border-top: 1px solid var(--color-border);
-  margin: 2.5rem 0;
+  margin: 2.75rem 0;
 }
 
 blockquote {
   border-left: 3px solid var(--color-accent);
-  padding-left: 1.25rem;
-  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  margin: 2rem 0;
   color: var(--color-muted);
   font-style: italic;
+  font-size: 1.05rem;
 }
 
-/* ── Episode / article meta ── */
+ul, ol {
+  margin-bottom: 1.4rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+/* ── Page-level meta labels ── */
 .episode-meta,
 .article-date {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
 }
 
 .episode-scripture {
+  font-family: var(--font-body);
   font-style: italic;
   color: var(--color-muted);
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
 }
 
 /* ── Audio player ── */
@@ -272,7 +293,7 @@ blockquote {
   margin: 2rem 0;
 }
 
-/* ── Episode list ── */
+/* ── Episode / article list (sub-pages) ── */
 .episode-list {
   list-style: none;
   margin-top: 2rem;
@@ -289,41 +310,76 @@ blockquote {
 
 .episode-list a {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--color-text);
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
 .episode-list a:hover {
   color: var(--color-accent);
+  opacity: 1;
 }
 
 .episode-list p {
-  margin-top: 0.4rem;
+  margin-top: 0.25rem;
   margin-bottom: 0;
-  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
   color: var(--color-muted);
+  line-height: 1.55;
+}
+
+/* ── Tag badges (articles) ── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  color: var(--color-muted);
+  text-decoration: none;
+  margin: 0.2rem 0.15rem 0.2rem 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tag:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 /* ── Footer ── */
 footer {
-  border-top: 1px solid var(--color-border);
+  background: var(--nav-bg);
+  border-top: 3px solid var(--nav-stripe);
   padding: 2rem;
   text-align: center;
-  font-size: 0.85rem;
-  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: rgba(245, 230, 200, 0.5);
 }
 
 footer a {
-  color: var(--color-accent);
+  color: var(--nav-stripe);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--nav-text);
+  opacity: 1;
 }
 
 /* ══════════════════════════════════════════
    HOMEPAGE SECTIONS
    ══════════════════════════════════════════ */
 
-/* Shared section utilities */
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -336,7 +392,7 @@ footer a {
 
 .section-heading {
   font-family: var(--font-heading);
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
@@ -347,13 +403,14 @@ footer a {
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 2rem;
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.65rem;
   border-bottom: 2px solid var(--color-accent);
 }
 
 .section-more {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -371,7 +428,7 @@ footer a {
   background: var(--color-accent);
   color: #f5e6c8;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -393,13 +450,13 @@ footer a {
   background: transparent;
   color: #f5e6c8;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   padding: 0.85rem 2rem;
-  border: 2px solid rgba(245, 230, 200, 0.35);
+  border: 2px solid rgba(245, 230, 200, 0.3);
   border-radius: 1px;
   transition: border-color 0.2s;
 }
@@ -434,7 +491,8 @@ footer a {
 
 .hero-label {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold);
@@ -469,9 +527,10 @@ footer a {
 }
 
 .hero-sub {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: rgba(245, 230, 200, 0.7);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(245, 230, 200, 0.65);
   max-width: 520px;
   line-height: 1.75;
   margin-bottom: 2.75rem;
@@ -511,13 +570,14 @@ footer a {
 .feature-card:hover {
   border-top-color: var(--color-gold);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
   opacity: 1;
 }
 
 .card-category {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -535,7 +595,8 @@ footer a {
 }
 
 .card-excerpt {
-  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   color: var(--color-muted);
   line-height: 1.65;
   flex: 1;
@@ -544,7 +605,7 @@ footer a {
 
 .card-link {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--color-accent);
@@ -561,11 +622,11 @@ footer a {
 
 .scripture-quote {
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
   font-style: italic;
   font-weight: 400;
   color: #f5e6c8;
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto 1rem;
   line-height: 1.55;
   border-left: none;
@@ -574,8 +635,9 @@ footer a {
 
 .scripture-ref {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-gold);
   font-style: normal;
@@ -613,7 +675,7 @@ footer a {
 
 .article-card-title {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.35;
   margin-bottom: 0.5rem;
@@ -622,7 +684,8 @@ footer a {
 }
 
 .article-card-excerpt {
-  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   color: var(--color-muted);
   line-height: 1.6;
   flex: 1;
@@ -631,7 +694,8 @@ footer a {
 
 .article-card-date {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 500;
   color: var(--color-muted);
   letter-spacing: 0.04em;
 }
@@ -678,7 +742,8 @@ footer a {
 
 .podcast-series {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -686,7 +751,8 @@ footer a {
 
 .podcast-ep {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -694,7 +760,7 @@ footer a {
 
 .podcast-item-title {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.3;
   transition: color 0.15s;
@@ -702,7 +768,8 @@ footer a {
 }
 
 .podcast-item-scripture {
-  font-size: 0.83rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   color: var(--color-muted);
   font-style: italic;
   margin-top: 0.25rem;
@@ -719,37 +786,47 @@ footer a {
 
 .donate-heading {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   color: #f5e6c8;
   margin-bottom: 1rem;
 }
 
 .donate-text {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: rgba(245, 230, 200, 0.65);
-  max-width: 460px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: rgba(245, 230, 200, 0.6);
+  max-width: 440px;
   margin: 0 auto 2.25rem;
   line-height: 1.75;
 }
 
-/* ── Responsive ── */
-@media (max-width: 640px) {
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
   header {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
-  nav {
-    gap: 0 0;
+  .site-logo img {
+    height: 48px;
   }
 
   nav a {
     padding: 0.3rem 0.5rem;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
+
+  main {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
 
   .hero {
     padding: 4rem 1.25rem 3.5rem;
